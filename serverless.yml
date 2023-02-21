@@ -1,0 +1,15 @@
+service: serverless
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+plugins:
+  - serverless-offline
+
+functions:
+  api:
+    handler: src/api/index.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
